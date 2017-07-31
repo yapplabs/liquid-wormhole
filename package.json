@@ -51,7 +51,7 @@
   "dependencies": {
     "ember-cli-babel": "^5.1.7",
     "ember-cli-htmlbars": "^1.1.1",
-    "ember-getowner-polyfill": "^1.2.1",
+    "ember-getowner-polyfill": "^2.0.1",
     "ember-weakmap": "2.0.0",
     "perf-primitives": "0.0.4"
   },
