@@ -40,14 +40,14 @@ will accept as attributes.
       <td>
         An action that will trigger when the wormhole is clicked.
       </td>
-      <tr>
-        <td>`to`</td>
-        <td>String</td>
-        <td>
-          The name of the `liquid-destination` that the component will be appended to.
-          Defaults to 'default'.
-        </td>
-      </tr>
+    </tr>
+    <tr>
+      <td>`to`</td>
+      <td>String</td>
+      <td>
+        The name of the `liquid-destination` that the component will be appended to.
+        Defaults to 'default'.
+      </td>
     </tr>
   </tbody>
 </table>
