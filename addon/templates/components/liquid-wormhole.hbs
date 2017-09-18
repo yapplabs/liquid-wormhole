@@ -1,7 +1,7 @@
 {{#if hasSend}}
   {{#if hasBlock}}
-    {{#component send id=wormholeId class=(concat wormholeClass " liquid-wormhole-element")}}
-      {{yield}}
+    {{#component send id=wormholeId class=(concat wormholeClass " liquid-wormhole-element") as |details|}}
+      {{yield details}}
     {{/component}}
   {{else}}
     {{component send id=wormholeId class=(concat wormholeClass " liquid-wormhole-element")}}
