@@ -1,6 +1,6 @@
-import Ember from "ember";
+export default function wormhole(context) {
+  let { use } = context;
 
-export default function wormhole({ use }) {
   let oldWormholeElement, newWormholeElement;
 
   if (this.oldElement) {
@@ -69,14 +69,14 @@ export default function wormhole({ use }) {
 
   return animation.apply(this, use.args).finally(() => {
     if (this.oldElement && oldWormholeElement) {
-      this.oldElement.remove()
+      this.oldElement.remove();
       oldWormholeElement.css({ visibility: 'visible' });
       oldWormholeElement.find('.liquid-child').css({ visibility: 'visible' });
     }
     if (this.newElement && newWormholeElement) {
-      this.newElement.remove()
+      this.newElement.remove();
       newWormholeElement.css({ visibility: 'visible' });
       newWormholeElement.find('.liquid-child').css({ visibility: 'visible' });
     }
   });
-};
+}

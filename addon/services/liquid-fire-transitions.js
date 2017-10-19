@@ -7,8 +7,8 @@ const wormholeActionMap = new WeakMap();
 
 export default TransitionMap.extend({
   transitionFor(conditions) {
-    if (conditions.matchContext && conditions.matchContext.helperName === 'liquid-wormhole'
-        || conditions.helperName === 'liquid-wormhole') {
+    if (conditions.matchContext && conditions.matchContext.helperName === 'liquid-wormhole' ||
+      conditions.helperName === 'liquid-wormhole') {
 
       const versions = conditions.versions;
 
