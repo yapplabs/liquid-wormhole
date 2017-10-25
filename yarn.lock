@@ -4925,11 +4925,11 @@ path-type@^1.0.0:
     pify "^2.0.0"
     pinkie-promise "^2.0.0"
 
-perf-primitives@0.0.4:
-  version "0.0.4"
-  resolved "https://registry.yarnpkg.com/perf-primitives/-/perf-primitives-0.0.4.tgz#f07e7f33ef3e200393aa218f591918fb3abe46e8"
+perf-primitives@^0.0.6:
+  version "0.0.6"
+  resolved "https://registry.yarnpkg.com/perf-primitives/-/perf-primitives-0.0.6.tgz#ceee069f3d7a49f83fe34b67e6b15a6d482825d8"
   dependencies:
-    ember-cli-babel "^5.1.6"
+    ember-cli-babel "^6.8.2"
 
 pify@^2.0.0:
   version "2.3.0"

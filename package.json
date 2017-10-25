@@ -53,7 +53,7 @@
     "ember-cli-htmlbars": "^1.1.1",
     "ember-getowner-polyfill": "^2.0.1",
     "ember-weakmap": "3.1.0",
-    "perf-primitives": "0.0.4"
+    "perf-primitives": "^0.0.6"
   },
   "ember-addon": {
     "configPath": "tests/dummy/config",
