@@ -52,7 +52,7 @@
     "ember-cli-babel": "^6.8.2",
     "ember-cli-htmlbars": "^1.1.1",
     "ember-getowner-polyfill": "^2.0.1",
-    "ember-weakmap": "2.0.0",
+    "ember-weakmap": "3.1.0",
     "perf-primitives": "0.0.4"
   },
   "ember-addon": {
