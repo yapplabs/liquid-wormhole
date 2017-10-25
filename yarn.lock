@@ -2680,7 +2680,7 @@ ember-try@^0.2.6:
     semver "^5.1.0"
     sync-exec "^0.6.2"
 
-ember-weakmap@3.1.0:
+ember-weakmap@^3.1.0:
   version "3.1.0"
   resolved "https://registry.yarnpkg.com/ember-weakmap/-/ember-weakmap-3.1.0.tgz#6a0649313cd510cc2b3ff876b086152b13fb55c9"
   dependencies:
