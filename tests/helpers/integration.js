@@ -1,5 +1,5 @@
 /* global sinon */
-import Ember from 'ember';
+import { A } from '@ember/array';
 
 function transitionMap(app) {
   return app.__container__.lookup('service:liquid-fire-transitions');
@@ -11,20 +11,15 @@ function transitionName(name) {
   }, 'expected transition ' + name);
 }
 
-Ember.Test.registerHelper(
-  'ranTransition',
-  function(app, assert, name) {
-    assert.ok(transitionMap(app).transitionFor.returned(transitionName(name)), `expected transition ${name}`);
-  });
+export function ranTransition(app, assert, name) {
+  assert.ok(transitionMap(app).transitionFor.returned(transitionName(name)), `expected transition ${name}`);
+}
 
-Ember.Test.registerHelper(
-  'noTransitionsYet',
-  function(app, assert) {
-    var tmap = transitionMap(app);
-    var ranTransitions = Ember.A(tmap.transitionFor.returnValues);
-    assert.ok(!ranTransitions.any((transition) => transition.animation !== tmap.defaultAction()), 'expected no transitions');
-  }
-);
+export function noTransitionsYet(app, assert) {
+  var tmap = transitionMap(app);
+  var ranTransitions = A(tmap.transitionFor.returnValues);
+  assert.ok(!ranTransitions.any((transition) => transition.animation !== tmap.defaultAction()), 'expected no transitions');
+}
 
 export function injectTransitionSpies(app) {
   var tmap = transitionMap(app);

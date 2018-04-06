@@ -24,7 +24,7 @@
     "ember-cli": "~3.0.2",
     "ember-cli-dependency-checker": "^2.0.0",
     "ember-cli-eslint": "^4.2.1",
-    "ember-cli-fastboot": "0.6.2",
+    "ember-cli-fastboot": "^1.1.4-beta.1",
     "ember-cli-github-pages": "0.1.2",
     "ember-cli-htmlbars": "^2.0.1",
     "ember-cli-htmlbars-inline-precompile": "^1.0.2",
@@ -55,6 +55,7 @@
     "ember-cli-babel": "^6.8.2",
     "ember-cli-htmlbars": "^1.1.1",
     "ember-getowner-polyfill": "^2.0.1",
+    "ember-native-dom-helpers": "0.6.1",
     "ember-weakmap": "^3.1.0",
     "perf-primitives": "^0.0.6"
   },
