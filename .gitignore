@@ -13,12 +13,8 @@
 /connect.lock
 /coverage/*
 /libpeerconnection.log
-<<<<<<< HEAD
-npm-debug.log
-=======
 npm-debug.log*
 yarn-error.log
->>>>>>> fe97afd... message
 testem.log
 
 # ember-try
