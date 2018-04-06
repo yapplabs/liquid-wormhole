@@ -1,25 +1,25 @@
-import Ember from 'ember';
+import $ from 'jquery';
+import { run } from '@ember/runloop';
+import { merge } from '@ember/polyfills';
 import Application from '../../app';
 import config from '../../config/environment';
 
 export default startApp;
 
 export function startApp(attrs) {
-  var application;
+  let attributes = merge({}, config.APP);
+  attributes.autoboot = true;
+  attributes = merge(attributes, attrs); // use defaults, but you can override;
 
-  var attributes = Ember.merge({}, config.APP);
-  attributes = Ember.merge(attributes, attrs); // use defaults, but you can override;
-
-  Ember.run(function() {
-    application = Application.create(attributes);
+  return run(() => {
+    let application = Application.create(attributes);
     application.setupForTesting();
     application.injectTestHelpers();
+    return application;
   });
-
-  return application;
 }
 
 export function destroyApp(app) {
-  Ember.run(app, 'destroy');
-  Ember.$('.liquid-target-container').remove();
+  run(app, 'destroy');
+  $('.liquid-target-container').remove();
 }
