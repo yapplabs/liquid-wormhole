@@ -1,7 +1,12 @@
+import wait from 'ember-test-helpers/wait';
 import { click, findAll, visit } from 'ember-native-dom-helpers';
 import { startApp, destroyApp } from '../helpers/app-lifecycle';
 
 import { module, test } from 'qunit';
+
+function visibility(selector) {
+  return window.getComputedStyle(find(selector)[0]).visibility;
+}
 
 let app;
 
@@ -19,6 +24,23 @@ module('Acceptance: Scenarios', function(hooks) {
 
     click('[data-test-toggle-wormhole]');
     assert.equal(find('.liquid-wormhole-element').text().trim(), 'testing123', 'component markup still exists');
+  });
+
+  test('components are visible during the transition', async function(assert) {
+    visit('/scenarios/component-in-wormhole');
+    setTimeout(() => {
+      assert.equal(visibility('.liquid-wormhole-element:first'), 'hidden');
+      assert.equal(visibility('.liquid-wormhole-element:last'), 'visible');
+    }, 100);
+
+    await wait();
+    click('[data-test-toggle-wormhole]');
+    setTimeout(() => {
+      assert.equal(visibility('.liquid-wormhole-element:first'), 'hidden');
+      assert.equal(visibility('.liquid-wormhole-element:last'), 'visible');
+    }, 100);
+
+    await wait();
   });
 
   test('templates still have action context once rendered', async function(assert) {
