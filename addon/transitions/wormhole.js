@@ -1,3 +1,17 @@
+import $ from 'jquery';
+
+let fixPasswordInputChromeIdError = (parentElem) => {
+  let hasChildPasswordInputField = $(parentElem).find('input[type="password"]').length > 0;
+
+  if (hasChildPasswordInputField) {
+    $(parentElem).find('*').each((i, child) => {
+      if (child.id) {
+        child.id = `${child.id}-new-id-${i}`;
+      }
+    })
+  }
+}
+
 export default function wormhole(context) {
   let { use } = context;
 
@@ -11,6 +25,8 @@ export default function wormhole(context) {
     if (oldWormholeElement.length > 0) {
       const newChild = oldWormholeElement.clone();
       newChild.addClass('liquid-wormhole-temp-element');
+
+      fixPasswordInputChromeIdError(newChild);
 
       oldWormholeElement.css({ visibility: 'hidden' });
       oldWormholeElement.find('.liquid-child').css({ visibility: 'hidden' });
@@ -42,6 +58,8 @@ export default function wormhole(context) {
 
       newWormholeElement.css({ visibility: 'hidden' });
       newWormholeElement.find('.liquid-child').css({ visibility: 'hidden' });
+
+      fixPasswordInputChromeIdError(newChild);
 
       const offset = newWormholeElement.offset();
 
