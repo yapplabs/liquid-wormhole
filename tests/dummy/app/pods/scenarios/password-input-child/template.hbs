@@ -1,0 +1,11 @@
+<button {{action "toggleWormhole"}} data-test-toggle-wormhole>Toggle Wormhole</button>
+
+{{#unless hideWormhole}}
+  {{#liquid-wormhole class="blue-box"}}
+    <form>
+      <input id="my-password-input" type="password">
+      <input id="my-text-input" type="text">
+      <button id="my-button" type="button">Submit</button>
+    </form>
+  {{/liquid-wormhole}}
+{{/unless}}
