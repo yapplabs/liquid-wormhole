@@ -12,8 +12,7 @@ Interactive documentation can be found
 
 ## Ember Compatibility
 
-Liquid Wormhole is tested on all versions of Ember >= 1.13. Long term support will
-continue for 1.13 and up for as long Ember core support continues.
+Liquid Wormhole is tested on all versions of Ember >= 1.13. Long term support will continue for 1.13 and up for as long Ember core support continues.
 
 ## Installation
 

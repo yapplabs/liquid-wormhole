@@ -5,15 +5,15 @@
     </button>
     <span class="navbar-brand">Liquid Wormhole</span>
   </div>
-  <div class="navbar-collapse {{unless navOpen 'collapse'}}">
+  <div class="navbar-collapse {{unless navOpen "collapse"}}">
     <ul class="nav navbar-nav navbar-left">
-      {{#link-to 'index' class="nav-item" tagName="li"}}
+      {{#link-to "index" class="nav-item" tagName="li"}}
         <a>Intro</a>
       {{/link-to}}
-      {{#link-to 'docs' class="nav-item" tagName="li"}}
+      {{#link-to "docs" class="nav-item" tagName="li"}}
         <a>Docs</a>
       {{/link-to}}
-      {{#link-to 'upgrading' class="nav-item" tagName="li"}}
+      {{#link-to "upgrading" class="nav-item" tagName="li"}}
         <a>Upgrading</a>
       {{/link-to}}
     </ul>
@@ -25,5 +25,5 @@
         </a>
       </li>
     </ul>
-  </div><!-- /.navbar-collapse -->
+  </div>{{! /.navbar-collapse }}
 </nav>
