@@ -1,14 +1,16 @@
-import $ from 'jquery';
+import { guidFor } from '@ember/object/internals';
 
-let fixPasswordInputChromeIdError = (parentElem) => {
-  let hasChildPasswordInputField = $(parentElem).find('input[type="password"]').length > 0;
+let deduplicateChildElementIds = (parentElem) => {
+  if (!parentElem) {
+    return;
+  }
 
-  if (hasChildPasswordInputField) {
-    $(parentElem).find('*').each((i, child) => {
-      if (child.id) {
-        child.id = `${child.id}-new-id-${i}`;
-      }
-    })
+  let childrenWithUniqueIds = parentElem[0].querySelectorAll('[id]')
+
+  if (childrenWithUniqueIds.length) {
+    for (let el of childrenWithUniqueIds) {
+      el.setAttribute('id', `${guidFor(el)}-${el.id}`);
+    }
   }
 }
 
@@ -26,7 +28,7 @@ export default function wormhole(context) {
       const newChild = oldWormholeElement.clone();
       newChild.addClass('liquid-wormhole-temp-element');
 
-      fixPasswordInputChromeIdError(newChild);
+      deduplicateChildElementIds(newChild);
 
       oldWormholeElement.css({ visibility: 'hidden' });
       oldWormholeElement.find('.liquid-child').css({ visibility: 'hidden' });
@@ -59,7 +61,7 @@ export default function wormhole(context) {
       newWormholeElement.css({ visibility: 'hidden' });
       newWormholeElement.find('.liquid-child').css({ visibility: 'hidden' });
 
-      fixPasswordInputChromeIdError(newChild);
+      deduplicateChildElementIds(newChild);
 
       const offset = newWormholeElement.offset();
 

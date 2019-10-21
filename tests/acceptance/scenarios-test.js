@@ -89,7 +89,7 @@ module('Acceptance: Scenarios', function(hooks) {
   });
 
   // https://github.com/pzuraq/liquid-wormhole/issues/60
-  test('wormhole with input type="password" child does not contain duplicate child id\'s', async function(assert) {
+  test('wormhole does not contain duplicate child id\'s', async function(assert) {
     visit('/scenarios/password-input-child');
     setTimeout(() => {
       let passwordInput1 = find('.liquid-wormhole-element:first #my-password-input').length;
