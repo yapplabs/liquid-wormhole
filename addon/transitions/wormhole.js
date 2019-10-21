@@ -1,3 +1,19 @@
+import { guidFor } from '@ember/object/internals';
+
+let deduplicateChildElementIds = (parentElem) => {
+  if (!parentElem) {
+    return;
+  }
+
+  let childrenWithUniqueIds = parentElem[0].querySelectorAll('[id]')
+
+  if (childrenWithUniqueIds.length) {
+    for (let el of childrenWithUniqueIds) {
+      el.setAttribute('id', `${guidFor(el)}-${el.id}`);
+    }
+  }
+}
+
 export default function wormhole(context) {
   let { use } = context;
 
@@ -11,6 +27,8 @@ export default function wormhole(context) {
     if (oldWormholeElement.length > 0) {
       const newChild = oldWormholeElement.clone();
       newChild.addClass('liquid-wormhole-temp-element');
+
+      deduplicateChildElementIds(newChild);
 
       oldWormholeElement.css({ visibility: 'hidden' });
       oldWormholeElement.find('.liquid-child').css({ visibility: 'hidden' });
@@ -42,6 +60,8 @@ export default function wormhole(context) {
 
       newWormholeElement.css({ visibility: 'hidden' });
       newWormholeElement.find('.liquid-child').css({ visibility: 'hidden' });
+
+      deduplicateChildElementIds(newChild);
 
       const offset = newWormholeElement.offset();
 

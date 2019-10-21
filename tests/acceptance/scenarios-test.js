@@ -87,4 +87,49 @@ module('Acceptance: Scenarios', function(hooks) {
     assert.equal(find('#not-showing-other').css('visibility'), 'visible', 'the not other is visible');
     assert.ok(!find('#showing-other').length, 'the other is hidden');
   });
+
+  // https://github.com/pzuraq/liquid-wormhole/issues/60
+  test('wormhole does not contain duplicate child id\'s', async function(assert) {
+    visit('/scenarios/password-input-child');
+    setTimeout(() => {
+      let passwordInput1 = find('.liquid-wormhole-element:first #my-password-input').length;
+      let textInput1 = find('.liquid-wormhole-element:first #my-text-input').length;
+      let buttonInput1 = find('.liquid-wormhole-element:first #my-button').length;
+
+      let passwordInput2 = find('.liquid-wormhole-element:last #my-password-input').length;
+      let textInput2 = find('.liquid-wormhole-element:last #my-text-input').length;
+      let buttonInput2 = find('.liquid-wormhole-element:last #my-button').length;
+
+      assert.ok(passwordInput1, 'password input contains original id');
+      assert.ok(textInput1, 'text input contains original id');
+      assert.ok(buttonInput1, 'button contains original id');
+
+      assert.notOk(passwordInput2, 'cloned password input does not contain duplicate id');
+      assert.notOk(textInput2, 'cloned text input does not contain duplicate id');
+      assert.notOk(buttonInput2, 'cloned button does not contain duplicate id');
+    }, 100);
+
+    await wait();
+    click('[data-test-toggle-wormhole]');
+    setTimeout(() => {
+      let passwordInput1 = find('.liquid-wormhole-element:first #my-password-input').length;
+      let textInput1 = find('.liquid-wormhole-element:first #my-text-input').length;
+      let buttonInput1 = find('.liquid-wormhole-element:first #my-button').length;
+
+      let passwordInput2 = find('.liquid-wormhole-element:last #my-password-input').length;
+      let textInput2 = find('.liquid-wormhole-element:last #my-text-input').length;
+      let buttonInput2 = find('.liquid-wormhole-element:last #my-button').length;
+
+      assert.ok(passwordInput1, 'password input contains original id');
+      assert.ok(textInput1, 'text input contains original id');
+      assert.ok(buttonInput1, 'button contains original id');
+
+      assert.notOk(passwordInput2, 'cloned password input does not contain duplicate id');
+      assert.notOk(textInput2, 'cloned text input does not contain duplicate id');
+      assert.notOk(buttonInput2, 'cloned button does not contain duplicate id');
+
+    }, 100);
+
+    await wait();
+  });
 });

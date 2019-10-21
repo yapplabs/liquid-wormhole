@@ -20,6 +20,7 @@ Router.map(function() {
     this.route('component-in-wormhole');
     this.route('actions-in-wormhole');
     this.route('liquid-fire-in-wormhole');
+    this.route('password-input-child');
   });
 });
 
