@@ -1,6 +1,7 @@
 [![Build Status](https://travis-ci.org/pzuraq/liquid-wormhole.svg?branch=master)](https://travis-ci.org/pzuraq/liquid-wormhole)
 
-# Liquid Wormhole
+liquid-wormhole
+==============================================================================
 
 Liquid Wormhole combines the ideas behind
 [Ember Wormhole](https://github.com/yapplabs/ember-wormhole.git) with the power of
@@ -10,17 +11,36 @@ easy-to-use toolkit for both animating UI elements "above" your templates.
 Interactive documentation can be found
 [here](http://pzuraq.github.io/liquid-wormhole/).
 
-## Ember Compatibility
 
-Liquid Wormhole is tested on all versions of Ember >= 1.13. Long term support will
-continue for 1.13 and up for as long Ember core support continues.
+Compatibility
+------------------------------------------------------------------------------
 
-## Installation
+* Ember.js v1.13 or above
+* Ember CLI v2.13 or above
+* Node.js v8 or above
+
+
+Installation
+------------------------------------------------------------------------------
 
 ```
 ember install liquid-wormhole
 ```
 
-## Contributing
 
-Fork the repository, make your changes on a branch, and submit a pull request.
+Usage
+------------------------------------------------------------------------------
+
+[Longer description of how to use the addon in apps.]
+
+
+Contributing
+------------------------------------------------------------------------------
+
+See the [Contributing](CONTRIBUTING.md) guide for details.
+
+
+License
+------------------------------------------------------------------------------
+
+This project is licensed under the [MIT License](LICENSE.md).
