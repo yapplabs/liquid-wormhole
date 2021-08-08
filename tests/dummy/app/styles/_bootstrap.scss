@@ -18,14 +18,16 @@ $brand-secondary: #d35400;
 $container-large-desktop: 992px;
 
 // Flat UI Variables
-@import "flat-ui/variables";
+// @import "flat-ui/variables";
 
 $border-radius-base:        2px;
 $border-radius-large:       2px;
 $border-radius-small:       2px;
 
-$link-color:                $pumpkin;
-$link-hover-color:          $carrot;
+$link-color:                'pumpkin';
+$link-hover-color:          'carrot';
+// $link-color:                $pumpkin;
+// $link-hover-color:          $carrot;
 
 // Main Bootstrap
 // Core variables and mixins
@@ -79,7 +81,7 @@ $link-hover-color:          $carrot;
 @import "bootstrap/utilities";
 @import "bootstrap/responsive-utilities";
 
-
+/*
 // Flat-UI-Icons
 @import "flat-ui/modules/glyphicons";
 
@@ -128,3 +130,4 @@ $link-hover-color:          $carrot;
   background: $btn-primary-active-bg;
   border-color: $btn-primary-active-bg;
 }
+*/

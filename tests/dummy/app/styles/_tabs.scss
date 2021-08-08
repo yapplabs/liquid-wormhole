@@ -22,7 +22,7 @@ $nav-list-gap:           13px;
       &.active {
         &:first-child {
           &:before {
-            background-color: $inverse;
+            // background-color: $inverse;
             border-left: $nav-tabs-border-width solid $nav-tabs-border-color;
             content: "";
             height: $nav-border-radius;
@@ -50,7 +50,7 @@ $nav-list-gap:           13px;
       > a:hover,
       > a:focus {
         border-color: $nav-tabs-border-color;
-        border-bottom-color: $inverse;
+        // border-bottom-color: $inverse;
         border-width: $nav-tabs-border-width;
         color: $nav-tabs-active-color;
       }
@@ -71,7 +71,7 @@ $nav-list-gap:           13px;
     &.open.active {
       a.dropdown-toggle,
       a.dropdown-toggle:hover {
-        background-color: $dropdown-background;
+        // background-color: $dropdown-background;
         border-color: $nav-tabs-border-color;
         border-bottom-color: transparent;
         color: $nav-tabs-active-color;
@@ -93,7 +93,7 @@ $nav-list-gap:           13px;
     // General link styling
     > a {
       border-width: $nav-tabs-border-width;
-      font-size: ceil($component-font-size-base * 0.933); // ~14px
+      // font-size: ceil($component-font-size-base * 0.933); // ~14px
       font-weight: 700;
       padding: 7px 21px 8px;
       color: $nav-tabs-color;
@@ -141,7 +141,7 @@ $nav-list-gap:           13px;
       }
     }
     .open .dropdown-toggle {
-      background-color: $dropdown-background;
+      // background-color: $dropdown-background;
     }
   }
 
@@ -159,7 +159,7 @@ $nav-list-gap:           13px;
           > a:focus {
             background-color: $brand-secondary;
             border: 2px solid $brand-secondary;
-            color: $inverse;
+            // color: $inverse;
             &:before { display: none; }
           }
           &:before { display: none; }
@@ -170,11 +170,11 @@ $nav-list-gap:           13px;
             > a,
             > a.dropdown-toggle,
             > a:hover {
-              color: $inverse;
+              // color: $inverse;
 
               .caret {
-                border-bottom-color: $inverse;
-                border-top-color: $inverse;
+                // border-bottom-color: $inverse;
+                // border-top-color: $inverse;
               }
             }
             &.open {

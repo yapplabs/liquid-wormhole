@@ -1,18 +1,23 @@
-# Upgrading from Liquid Wormhole v1
+<h1>Upgrading from Liquid Wormhole v1</h1>
 
+<p>
 One of the overall goals of Liquid Wormhole v2 was to simplify the API and bring
 it more inline with vanilla Liquid Fire. Several breaking changes have been
 made, and this article is meant as a guide to summarize them and describe an
 upgrade path.
+</p>
 
-## Removing the `to` attribute and `target` helper
+<h2>Removing the `to` attribute and `target` helper</h2>
 
+<p>
 In v2, the `to` attribute is no longer needed by default, and `target` is not
 used to match transitions. You can either change `to` to `stack`, or add it to
 your wormhole's classes. You'll then be able to match it in your transitions
 file using `this.matchSelector` or `this.hasClass` respectively.
+</p>
 
-### Old:
+<h3>Old:</h3>
+
 ```hbs
 {{liquid-wormhole to="popup"}}
 ```
@@ -22,7 +27,8 @@ this.transition(
 );
 ```
 
-### New:
+<h3>New:</h3>
+
 ```hbs
 {{liquid-wormhole class="popup"}}
 
@@ -42,14 +48,17 @@ this.transition(
 );
 ```
 
-## Replacing the `onOpenWormhole` and `onCloseWormhole` helpers
+<h2>Replacing the `onOpenWormhole` and `onCloseWormhole` helpers</h2>
 
+<p>
 The `onOpenWormhole` and `onCloseWormhole` helpers are deprecated in favor of
 using the standard `toValue`, `fromValue`, and `betweenValues` matcher
 functions. Whenever a wormhole is opening for the first time, the `fromValue`
 will be `null`, and whenever a wormhole is closing, the so will the `toValue`.
+</p>
 
-### Old:
+<h3>Old:</h3>
+
 ```js
 this.transition(
   onOpenWormhole()
@@ -60,7 +69,8 @@ this.transition(
 );
 ```
 
-### New:
+<h3>New:</h3>
+
 ```js
 this.transition(
   this.toValue(true)
@@ -71,14 +81,17 @@ this.transition(
 );
 ```
 
-## Replacing `toValue` and `fromValue` matchers
+<h2>Replacing `toValue` and `fromValue` matchers</h2>
 
+<p>
 Wormholes are no longer directly passed in to their transition matchers.
 Instead, the `value` property for a wormhole is passed in. You can move any of
 the properties that you had into a `hash` helper and everything should work.
 Remember, you may need to perform null checking.
+</p>
 
-### Old:
+<h3>Old:</h3>
+
 ```hbs
 {{liquid-wormhole index=1}}
 ```
@@ -89,7 +102,8 @@ this.transition(
 );
 ```
 
-### New:
+<h3>New:</h3>
+
 ```hbs
 {{liquid-wormhole value=(hash index=1)}}
 ```

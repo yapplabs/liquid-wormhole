@@ -1,7 +1,7 @@
 import $ from 'jquery';
 import Service from '@ember/service';
 import { getOwner } from '@ember/application';
-import HashMap from 'perf-primitives/hash-map';
+import HashMap from '../utils/fast-hash-map';
 
 export default Service.extend({
   init() {

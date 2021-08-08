@@ -1,24 +1,26 @@
-import { click, findAll, visit } from 'ember-native-dom-helpers';
-import { startApp, destroyApp } from '../helpers/app-lifecycle';
-import { injectTransitionSpies, ranTransition, noTransitionsYet } from '../helpers/integration';
+import { click, find, visit } from '@ember/test-helpers';
+import {
+  injectTransitionSpies,
+  ranTransition,
+  noTransitionsYet
+} from '../helpers/integration';
 
 import { module, test } from 'qunit';
-
-let app;
+import { setupApplicationTest } from 'ember-qunit';
 
 module('Acceptance: Demos', function(hooks) {
+  setupApplicationTest(hooks);
   hooks.beforeEach(function() {
-    app = startApp();
-
     // Conceptually, integration tests shouldn't be digging around in
     // the container. But animations are slippery, and it's easier to
     // just spy on them to make sure they're being run than to try to
     // observe their behavior more directly.
-    injectTransitionSpies(app);
+    injectTransitionSpies(this);
   });
 
   hooks.afterEach(function() {
-    destroyApp(app);
+    let container = find('.liquid-target-container');
+    container && container.remove();
   });
 
   test('destination container is cleaned when empty', async function(assert) {
@@ -26,19 +28,20 @@ module('Acceptance: Demos', function(hooks) {
     await click('#hello-world-button');
     await click('#hello-world-button');
 
-    assert.equal(findAll('.default-liquid-destination .liquid-destination-stack').length, 0, 'it\'s empty');
+    assert.dom('.default-liquid-destination .liquid-destination-stack').doesNotExist('it\'s empty');
   });
 
   test('basic liquid-wormhole works correctly and can determine context', async function(assert) {
     await visit('/docs');
-    noTransitionsYet(app, assert);
+    noTransitionsYet(this, assert);
 
     await click('#hello-world-button');
-    assert.equal(findAll('.default-liquid-destination .liquid-wormhole-element').length, 1, 'it exists');
-    ranTransition(app, assert, 'wormhole');
+    await this.pauseTest();
+    assert.dom('.default-liquid-destination .liquid-wormhole-element').exists({ count: 1 }, 'it exists');
+    ranTransition(this, assert, 'wormhole');
 
     await click('#hello-world-button');
-    assert.equal(findAll('.default-liquid-destination .liquid-wormhole-element').length, 0, 'it closed');
-    ranTransition(app, assert, 'wormhole');
+    assert.dom('.default-liquid-destination .liquid-wormhole-element').doesNotExist('it closed');
+    ranTransition(this, assert, 'wormhole');
   });
 });

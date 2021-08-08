@@ -1,8 +1,8 @@
-/* global sinon */
+import sinon from 'sinon';
 import { A } from '@ember/array';
 
 function transitionMap(app) {
-  return app.__container__.lookup('service:liquid-fire-transitions');
+  return app.owner.lookup('service:liquid-fire-transitions');
 }
 
 function transitionName(name) {

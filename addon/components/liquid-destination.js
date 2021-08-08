@@ -4,7 +4,7 @@ import { gt } from '@ember/object/computed';
 import { scheduleOnce, next } from '@ember/runloop';
 import { inject as service } from '@ember/service';
 import { A } from '@ember/array';
-import HashMap from 'perf-primitives/hash-map';
+import HashMap from '../utils/fast-hash-map';
 import layout from '../templates/components/liquid-destination';
 
 export default Component.extend({
@@ -28,16 +28,16 @@ export default Component.extend({
 
     this.wormholeQueue = A();
 
-    const name = this.get('name');
+    const name = this.name;
 
-    this.get('liquidWormholeService').registerDestination(name, this);
+    this.liquidWormholeService.registerDestination(name, this);
   },
 
   willDestroyElement() {
     this._super(...arguments);
 
-    const name = this.get('name');
-    this.get('liquidWormholeService').unregisterDestination(name);
+    const name = this.name;
+    this.liquidWormholeService.unregisterDestination(name);
   },
 
   appendWormhole(wormhole) {
@@ -119,7 +119,7 @@ export default Component.extend({
 
       // Clean empty stacks
       if (value === null) {
-        const stacks = this.get('stacks');
+        const stacks = this.stacks;
         const stackName = view.get('parentView.stackName');
         const stack = this.stackMap.get(stackName);
 

@@ -1,3 +1,4 @@
+<p>
 At times you may want to animate between different wormholes - for a complicated
 modal flow, or an onboarding flow, or something else. You can do this by
 specifying a stack name with the `stack` property. New wormholes will be pushed
@@ -5,9 +6,12 @@ onto an existing stack, and only the most recent wormhole will be showing. When
 matching in `toValue`, `fromValue`, or `betweenValues`, the `value` parameter
 for both the previous wormhole on the stack and the next one will be passed in.
 You can pass in any value you want in the property and match based on that.
+</p>
 
+<p>
 The stack name will be applied as the id of the wormhole, allow you to match them using
 the `matchSelector` helper from liquid-fire.
+</p>
 
 <div class="example-button-container">
   <button {{action 'showFirstStep'}} class="btn btn-primary btn-embossed">
